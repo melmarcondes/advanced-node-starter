@@ -12,6 +12,7 @@ class CustomPage {
     });
 
     const page = await browser.newPage();
+    page.setBypassCSP(true);
     const customPage = new CustomPage(page);
 
     return new Proxy(customPage, {
