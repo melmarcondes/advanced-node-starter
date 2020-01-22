@@ -1,8 +1,9 @@
 const puppeteer = require('puppeteer');
+const {TimeoutError} = require('puppeteer/Errors');
 const sessionFactory = require('../factories/sessionFactory');
 const userFactory = require('../factories/userFactory');
 
-//Number.prototype._called = {}
+Number.prototype._called = {}
 
 class CustomPage {
   static async build() {
@@ -33,7 +34,13 @@ class CustomPage {
     await this.page.setCookie({ name: 'session', value: session });
     await this.page.setCookie({ name: 'session.sig', value: sig });
     await this.page.goto('http://localhost:3000/blogs');
-    await this.page.waitForSelector('a[href="/auth/logout"]');
+    try {
+      await this.page.waitForSelector('a[href="/auth/logout"]');
+    } catch (e) {
+      if (e instanceof TimeoutError) {
+        console.log(e);
+      }
+    }
   }
 
   async getContentsOf(selector) {
