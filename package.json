@@ -30,11 +30,11 @@
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "path-parser": "^2.0.2",
-    "puppeteer": "^2.0.0",
+    "puppeteer": "1.11.0",
     "redis": "^2.8.0",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "puppeteer": "^2.0.0"
+    "puppeteer": "1.11.0"
   }
 }
