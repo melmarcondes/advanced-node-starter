@@ -39,7 +39,7 @@ class CustomPage {
     await this.page.setCookie({ name: 'session.sig', value: sig });
     await this.page.goto('http://localhost:3000/blogs');
     try {
-      await this.page.waitForSelector('a[href="/auth/logout"]');
+      await this.page.waitFor('a[href="/auth/logout"]');
     } catch (e) {
       if (e instanceof TimeoutError) {
         console.log(e);
